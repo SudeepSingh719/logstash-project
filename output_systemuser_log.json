@@ -1,0 +1,19 @@
+{
+  "message": "<189>date=2025-04-08,time=00:00:01,devname=\"MASKED_FW02\",devid=\"FGTXXXXXXXXXXXXXX\",eventtime=1744050601042881580,tz=\"+0530\",logid=\"0102038012\",type=\"event\",subtype=\"user\",level=\"notice\",vd=\"root\",logdesc=\"Seeding from entropy source\",user=\"system\",action=\"reseeding\",msg=\"Reseeding PRNG from entropy source\"",
+  "level": "notice",
+  "@timestamp": "2025-04-09T15:35:34.585104939Z",
+  "event_time": "1744050601042881580",
+  "sub_type": "user",
+  "time": "00:00:01",
+  "process": "system",
+  "date": "2025-04-08",
+  "description": "Reseeding PRNG from entropy source",
+  "device_id": "FGTXXXXXXXXXXXXXX",
+  "devoce_id": "MASKED_FW02",
+  "log_id": "0102038012",
+  "vd": "root",
+  "@version": "1",
+  "action": "reseeding",
+  "log_description": "Seeding from entropy source",
+  "event_type": "event"
+}

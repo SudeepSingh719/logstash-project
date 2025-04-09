@@ -1,0 +1,22 @@
+{
+  "level": "information",
+  "event_time": "1744038039694847250",
+  "client_ip": "10.0.0.2",
+  "device_id": "FGTXXXXXXXXXXXXXX",
+  "log_id": "0100026001",
+  "vd": "root",
+  "interface": "internal",
+  "log_description": "DHCP Ack log",
+  "event_type": "event",
+  "message": "<190>date=2025-04-07,time=20:30:39,devname=\"MASKED_FW01\",devid=\"FGTXXXXXXXXXXXXXX\",eventtime=1744038039694847250,tz=\"+0530\",logid=\"0100026001\",type=\"event\",subtype=\"system\",level=\"information\",vd=\"root\",logdesc=\"DHCP Ack log\",interface=\"internal\",dhcp_msg=\"Ack\",mac=\"00:00:00:00:00:02\",ip=10.0.0.2,lease=28800,hostname=\"HOST-B\",msg=\"DHCP server sends a DHCPACK\"",
+  "devoce_name": "MASKED_FW01",
+  "@timestamp": "2025-04-09T15:35:34.580769096Z",
+  "sub_type": "system",
+  "time": "20:30:39",
+  "date": "2025-04-07",
+  "description": "DHCP server sends a DHCPACK",
+  "client_mac": "00:00:00:00:00:02",
+  "DHCP_message": "Ack",
+  "clinet_host": "HOST-B",
+  "@version": "1"
+}

@@ -1,0 +1,34 @@
+input {
+  file {
+    path => "/home/sudeep/logstash-project/input.log"
+    start_position => "beginning"
+    sincedb_path => "/dev/null"
+  }
+}
+
+filter {
+  if [message] == "" {
+    drop {}
+}
+  grok {
+    match => {
+      "message" => [
+        '<%{INT}>date=%{DATA:date},time=%{DATA:time},devname=\"%{WORD:device_name}\",devid=\"%{WORD:device_id}\",eventtime=%{INT:event_time},tz=\"%{DATA:timezone}\",logid=\"%{WORD:log_id}\",type=\"%{WORD:event_type}\",subtype=\"%{WORD:sub_type}\",level=\"%{WORD:level}\",vd=\"%{WORD:vd}\",srcip=%{IP:source_ip},srcname=\"%{DATA:source_name}\",srcport=%{INT:source_port},srcintf=\"%{WORD:source_interface}\",srcintfrole=\"%{WORD:source_intfrole}\",dstip=%{IP:destination_ip},dstport=%{INT:destination_port},dstintf=\"%{WORD:destination_interface}\",dstintfrole=\"%{WORD:destination_intfrole}\",srcuuid=\"%{DATA:source_uuid}\",dstuuid=\"%{DATA:destination_uuid}\",srccountry=\"%{WORD:source_country}\",dstcountry=\"%{DATA:destination_country}\",sessionid=%{INT:session_id},proto=%{INT:protocol_number},action=\"%{WORD:action}\",policyid=%{INT:policy_id},policytype=\"%{WORD:policy_type}\",poluuid=\"%{DATA:policy_uuid}\",policyname=\"%{DATA:policy_name}\",service=\"%{DATA:service}\",trandisp=\"%{WORD:trandisp}\",transip=%{IP:transip},transport=%{INT:transport},duration=%{INT:duration},sentbyte=%{INT:sent_bytes},rcvdbyte=%{INT:received_bytes},sentpkt=%{INT:sent_packets},rcvdpkt=%{INT:received_packets},vwlid=%{INT:vwlid},vwlquality=\"%{DATA:vwlquality}\",vwlname=\"%{WORD:vwlname}\",appcat=\"%{WORD:application_category}\",sentdelta=%{INT:sent_delta},rcvddelta=%{INT:received_delta},osname=\"%{WORD:operating_system}\",srcswversion=\"%{INT:source_software_version}\",mastersrcmac=\"%{DATA:master_source_mac}\",srcmac=\"%{DATA:source_mac}\",srcserver=%{INT:source_server}',
+        '<%{INT}>date=%{DATA:date},time=%{DATA:time},devname=\"%{WORD:devoce_name}\",devid=\"%{WORD:device_id}\",eventtime=%{INT:event_time},tz=\"%{DATA}\",logid=\"%{WORD:log_id}\",type=\"%{WORD:event_type}\",subtype=\"%{WORD:sub_type}\",level=\"%{WORD:level}\",vd=\"%{WORD:vd}\",logdesc=\"%{DATA:log_description}\",interface=\"%{WORD:interface}\",dhcp_msg=\"%{WORD:DHCP_message}\",mac=\"%{DATA:client_mac}\",ip=%{IPV4:client_ip},lease=%{INT},hostname=\"%{DATA:clinet_host}\",msg=\"%{GREEDYDATA:description}\"',
+        '<%{INT}>date=%{DATA:date},time=%{DATA:time},devname=\"%{WORD:devoce_id}\",devid=\"%{WORD:device_id}\",eventtime=%{INT:event_time},tz=\"%{DATA}\",logid=\"%{WORD:log_id}\",type=\"%{WORD:event_type}\",subtype=\"%{WORD:sub_type}\",level=\"%{WORD:level}\",vd=\"%{WORD:vd}\",logdesc=\"%{DATA:log_description}\",msg=\"%{DATA:description}\",action=\"%{DATA:action}\",remip=%{IPV4:remote_ip},locip=%{IPV4:local_ip},remport=%{INT:remote_port},locport=%{INT:local_port},outintf=\"%{DATA:outgoing_interface}\",cookies=\"%{DATA:cookies}\",user=\"%{IPV4:user_remote_ip}\",group=\"%{DATA:user_group}\",useralt=\"%{DATA:alternate_user}\",xauthuser=\"%{DATA:xauth_user}\",xauthgroup=\"%{DATA:xauth_group}\",assignip=%{DATA:vpn_ip},vpntunnel=\"%{DATA:vpn_tunnel}\",advpnsc=%{INT:advpn_shortcut}',
+        '<%{INT}>date=%{DATA:date},time=%{DATA:time},devname=\"%{WORD:devoce_id}\",devid=\"%{WORD:device_id}\",eventtime=%{INT:event_time},tz=\"%{DATA}\",logid=\"%{WORD:log_id}\",type=\"%{WORD:event_type}\",subtype=\"%{WORD:sub_type}\",level=\"%{WORD:level}\",vd=\"%{WORD:vd}\",logdesc=\"%{DATA:log_description}\",user=\"%{WORD:process}\",action=\"%{WORD:action}\",msg=\"%{DATA:description}\"'
+      ]
+    }
+   }
+  mutate {
+    remove_field => ["host", "log","event"]
+  }
+}
+
+
+output {
+  file {
+    path => "/home/sudeep/logstash-project/output.json"
+    codec => json_lines
+  }
+}
