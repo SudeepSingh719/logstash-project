@@ -1,14 +1,19 @@
 # Logstash Project
 
 ## Overview
-This project demonstrates my ability to quickly learn and configure Logstash for ingesting and parsing security log data. It includes a configuration to transform syslog-style FortiGate logs into structured JSON.
+This project demonstrates my ability to configure Logstash for ingesting and parsing security log data. It includes a configuration to transform syslog-style FortiGate logs into structured JSON.
+For this logstash project I have used Fortigate Firewall sample logs to demonstrate log normalization.
 
 ---
 
 ## Project Structure
 - `input.log`: Contains the raw FortiGate syslog log samples.
 - `parser.conf`: The Logstash configuration file used to parse and normalize logs.
-- `output.txt`: Sample output from Logstash showing the normalized JSON structure.
+- `output.json`: Sample output from Logstash showing the normalized JSON structure.
+- `output_dhcplog.json`: Sample output from Logstash showing the normalized JSON DHCP log structure.
+- `output_systemuser_log.json`: Sample output from Logstash showing the normalized SystemUser log JSON structure.
+- `output_trafficlog.json`: Sample output from Logstash showing the normalized Traffic log JSON structure.
+- `output_vpnlog.json`: Sample output from Logstash showing the normalized VPN log JSON structure.
 - `README.md`: This file — describes the approach and configuration.
 
 ---
@@ -23,7 +28,7 @@ This project demonstrates my ability to quickly learn and configure Logstash for
 - Mutate Plugin: Removes unnecessary fields like `host`, `log`, etc., to keep the output clean.
 
 ### Output
-- **Output Plugin**: The `file` output plugin writes the normalized JSON to `output.txt`.
+- **Output Plugin**: The `file` output plugin writes the normalized JSON to `output.json`.
 
 ---
 
